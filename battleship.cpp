@@ -48,7 +48,7 @@ bool shoot(int row, int col){
   }
   if (opContent[row][col] == Water) {
     myGuess[row][col] = Water;
-    return false;
+    return true;
   }
   if (opContent[row][col] == Boat) {
     FillWaterAround(row, col);
@@ -61,7 +61,7 @@ bool shoot(int row, int col){
 void FillWaterAround(int row, int col){
   for (int i = -1; i <= 1; i++) {
     for (int j = -1; j <= 1; j++) {
-      if ((row-i > 0 && row-i < FIELDSIZE) || (col-j > 0 && col-j < FIELDSIZE)) {
+      if ((row-i >= 0 && row-i < FIELDSIZE) || (col-j >= 0 && col-j < FIELDSIZE)) {
         myGuess[row-i][col-j] = Water;
       }
     }
